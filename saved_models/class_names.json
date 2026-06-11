@@ -1,0 +1,43 @@
+{
+  "class_names": [
+    "articulated_truck",
+    "background",
+    "bicycle",
+    "bus",
+    "car",
+    "motorcycle",
+    "non-motorized_vehicle",
+    "pedestrian",
+    "pickup_truck",
+    "single_unit_truck",
+    "work_van"
+  ],
+  "class_to_idx": {
+    "articulated_truck": 0,
+    "background": 1,
+    "bicycle": 2,
+    "bus": 3,
+    "car": 4,
+    "motorcycle": 5,
+    "non-motorized_vehicle": 6,
+    "pedestrian": 7,
+    "pickup_truck": 8,
+    "single_unit_truck": 9,
+    "work_van": 10
+  },
+  "idx_to_class": {
+    "0": "articulated_truck",
+    "1": "background",
+    "2": "bicycle",
+    "3": "bus",
+    "4": "car",
+    "5": "motorcycle",
+    "6": "non-motorized_vehicle",
+    "7": "pedestrian",
+    "8": "pickup_truck",
+    "9": "single_unit_truck",
+    "10": "work_van"
+  },
+  "num_classes": 11,
+  "img_size": 128
+}
