@@ -147,14 +147,19 @@ h4 {
 .primary-button,
 .secondary-button,
 .sample-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   min-height: 42px;
   padding: 0 14px;
   background: var(--surface);
   color: var(--text);
+  line-height: 1;
   text-decoration: none;
   font-weight: 750;
+  white-space: nowrap;
 }
 
 .icon-button {
