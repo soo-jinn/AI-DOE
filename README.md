@@ -1,8 +1,3 @@
-# AI DOE
-
-AI Spec DOE is now paired with **IntelliTraffic**, a local web app for the saved
-MobileNetV2 vehicle classifier in `saved_models`.
-
 ## IntelliTraffic Web App
 
 The app lets an operator upload a JPG or PNG traffic image, runs the existing
@@ -12,7 +7,7 @@ and records each inference attempt in a local SQLite audit log.
 Key files:
 
 - `intellitraffic/app.py` - local Python web server and inference API
-- `intellitraffic/static/` - professional Mapua-themed web UI
+- `intellitraffic/static/` - Web UI
 - `intellitraffic/data/inference_logs.sqlite3` - created automatically at runtime
 - `saved_models/vehicle_classifier_final.keras` - trained classifier
 - `saved_models/class_names.json` - class order and image size metadata
