@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IntelliTraffic</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-lockup" aria-label="IntelliTraffic">
+        <div class="brand-mark">IT</div>
+        <div>
+          <p class="eyebrow">Mapua University</p>
+          <h1>IntelliTraffic</h1>
+        </div>
+      </div>
+      <nav class="top-actions" aria-label="Application controls">
+        <a class="ghost-button" href="/api/history.csv">Export CSV</a>
+        <button class="icon-button" id="themeToggle" type="button" aria-label="Toggle theme">Dark</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero-band">
+        <div class="headline">
+          <p class="eyebrow">Local MobileNetV2 vehicle classifier</p>
+          <h2>Traffic image inference console</h2>
+        </div>
+        <div class="status-strip" id="statusStrip">
+          <span class="status-dot"></span>
+          <span id="statusText">Checking runtime</span>
+        </div>
+      </section>
+
+      <section class="workspace-grid">
+        <div class="panel upload-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Input</p>
+              <h3>Vehicle image</h3>
+            </div>
+            <span class="pill">JPG PNG</span>
+          </div>
+
+          <label class="drop-zone" id="dropZone" for="imageInput">
+            <input id="imageInput" type="file" accept="image/png,image/jpeg">
+            <span class="drop-kicker">Drop file or browse</span>
+            <span class="drop-title">Select a cropped traffic image</span>
+            <span class="drop-meta">8 MB max</span>
+          </label>
+
+          <div class="preview-frame empty" id="previewFrame">
+            <img id="previewImage" alt="Selected traffic image preview">
+            <div class="preview-empty">
+              <span class="scanline"></span>
+              <strong>No image selected</strong>
+            </div>
+          </div>
+
+          <div class="button-row">
+            <button class="primary-button" id="predictButton" type="button" disabled>Classify</button>
+            <button class="secondary-button" id="resetButton" type="button">Reset</button>
+          </div>
+
+          <div class="sample-grid" id="sampleGrid" aria-label="Sample images"></div>
+        </div>
+
+        <div class="panel result-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Output</p>
+              <h3>Classification</h3>
+            </div>
+            <span class="pill" id="latencyPill">Ready</span>
+          </div>
+
+          <div class="result-empty" id="resultEmpty">
+            <span class="result-grid-art"></span>
+            <p>Awaiting image</p>
+          </div>
+
+          <div class="result-content hidden" id="resultContent">
+            <div class="prediction-hero">
+              <div>
+                <p class="eyebrow">Top class</p>
+                <h4 id="topLabel">-</h4>
+                <p class="muted" id="imageMeta">-</p>
+              </div>
+              <div class="confidence-ring" id="confidenceRing">
+                <span id="confidenceText">0%</span>
+              </div>
+            </div>
+
+            <div class="top-list" id="topList"></div>
+
+            <div class="chart-block">
+              <div class="chart-heading">
+                <p class="eyebrow">Softmax distribution</p>
+                <span id="classCount">11 classes</span>
+              </div>
+              <div class="probability-bars" id="probabilityBars"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="dashboard-grid">
+        <div class="panel compact-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Runtime</p>
+              <h3>System status</h3>
+            </div>
+          </div>
+          <dl class="status-list" id="statusList"></dl>
+        </div>
+
+        <div class="panel history-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Audit</p>
+              <h3>Inference log</h3>
+            </div>
+            <input class="search-input" id="historySearch" type="search" placeholder="Search logs">
+          </div>
+          <div class="history-table-wrap">
+            <table class="history-table">
+              <thead>
+                <tr>
+                  <th>Time</th>
+                  <th>File</th>
+                  <th>Class</th>
+                  <th>Confidence</th>
+                  <th>Latency</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="historyBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast hidden" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
