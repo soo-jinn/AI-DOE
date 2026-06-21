@@ -140,7 +140,7 @@ def runtime_status() -> dict:
     }
 
 
-def get_runtime_modules():
+def get_runtime_modules(): # Improve model inference API handling
     global _runtime_modules, _runtime_error
     if _runtime_modules is not None:
         return _runtime_modules
