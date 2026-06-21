@@ -128,7 +128,7 @@ def log_inference(
         conn.commit()
 
 
-def runtime_status() -> dict:
+def runtime_status() -> dict: # Refine prediction response and runtime status
     tensorflow_available = importlib.util.find_spec("tensorflow") is not None
     numpy_available = importlib.util.find_spec("numpy") is not None
     pillow_available = importlib.util.find_spec("PIL") is not None
