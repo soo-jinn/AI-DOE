@@ -188,7 +188,7 @@ def sanitize_filename(filename: str) -> str:
     return name or "uploaded_image"
 
 
-def validate_upload(filename: str, image_bytes: bytes) -> tuple[bool, str]:
+def validate_upload(filename: str, image_bytes: bytes) -> tuple[bool, str]: # Validate image uploads for local classifier
     if not image_bytes:
         return False, "The uploaded file was empty."
     if len(image_bytes) > MAX_UPLOAD_BYTES:
