@@ -87,6 +87,23 @@ function resetSelection() {
   els.latencyPill.textContent = "Ready";
 }
 
+async function loadStatus() {
+  try {
+    const res = await fetch("/api/status");
+    const status = await res.json();
+    const runtimeReady = status.runtime && status.runtime.ready_for_inference;
+    const ready = status.model_exists && status.class_json_exists && runtimeReady;
+    els.statusStrip.classList.toggle("good", ready);
+    els.statusStrip.classList.toggle("bad", !ready);
+    els.statusText.textContent = ready ? "Model runtime ready" : "Runtime needs attention";
+    renderStatus(status);
+  } catch (error) {
+    els.statusStrip.classList.add("bad");
+    els.statusText.textContent = "Status unavailable";
+    showToast(error.message);
+  }
+}
+
 function renderStatus(status) {
   const runtime = status.runtime || {};
   const rows = [
